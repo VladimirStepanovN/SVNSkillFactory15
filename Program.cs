@@ -1,12 +1,12 @@
 ﻿namespace SVNSkillFactory15
 {
     /// <summary>
-    /// Задание 5.2.3. Измените код Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы").
-    /// Необходимо добавить переменную username, которая будет отображена в начале текста.
+    /// Задание 5.2.7. Внесите корректировки в код вывода ваших параметров на экран так,
+    /// чтобы имя и возраст выводились одной строкой, а "Напишите свой любимый цвет" — другой.
     /// </summary>
     internal class Program
     {
-        static string ShowColor(string name) => Console.ReadLine();
+        static string ShowColor(string name, int age) => Console.ReadLine();
         public static void Main(string[] args)
         {
             (string name, int age) anketa;
@@ -19,8 +19,8 @@
             string[] favcolors = new string[3];
             for (int i = 0; i < favcolors.Length; i++)
             {
-                Console.WriteLine("{0} Напишите свой любимый цвет на английском с маленькой буквы", anketa.name);
-                favcolors[i] = ShowColor(anketa.name);
+                Console.WriteLine("{0}, {1} лет \nНапишите свой любимый цвет на английском с маленькой буквы", anketa.name, anketa.age);
+                favcolors[i] = ShowColor(anketa.name, anketa.age);
             }
             foreach (string favcolor in favcolors)
             {
