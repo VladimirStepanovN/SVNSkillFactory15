@@ -1,45 +1,33 @@
 ﻿namespace SVNSkillFactory15
 {
     /// <summary>
-    /// Задание 5.1.6. Модифицируйте метод из скринкаста:
-    /// после ввода массива с клавиатуры необходимо отсортировать массив и вывести его на экран. 
+    /// Задание 5.2.2. Добавьте код из юнита 4.4 (Задание 4.4.2),
+    /// который получает данные пользователя, и исправьте метод ShowColor,
+    /// ему необходимо передать поле name кортежа. 
     /// </summary>
     internal class Program
     {
-        static int[] GetArrayFromConsole()
-        {
-            var result = new int[5];
-
-            for (int i = 0; i < result.Length; i++)
-            {
-                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
-                result[i] = int.Parse(Console.ReadLine());
-            }
-            return result;
-        }
-        static int[] SortByInsertion(int[] source)
-        {
-            int outer, inner;
-            for (outer = 1; outer < source.Length; outer++)
-            {
-                int temp = source[outer];
-                inner = outer;
-                while (inner > 0 && source[inner - 1] >= temp)
-                {
-                    source[inner] = source[inner - 1];
-                    --inner;
-                }
-                source[inner] = temp;
-            }
-            return source;
-        }
+        static string ShowColor(string name) => Console.ReadLine();
         public static void Main(string[] args)
         {
-            int[] result = SortByInsertion(GetArrayFromConsole());
-            foreach (int i in result)
+            (string name, int age) anketa;
+            Console.Write("Введите имя: ");
+            anketa.name = Console.ReadLine();
+            Console.Write("Введите возраст с цифрами: ");
+            anketa.age = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ваше имя: {0}", anketa.name);
+            Console.WriteLine("Ваш возраст: {0}", anketa.age);
+            string[] favcolors = new string[3];
+            for (int i = 0; i < favcolors.Length; i++)
             {
-                Console.WriteLine(i);
+                Console.WriteLine($@"Напишите свой любимый цвет №{i + 1} на английском с маленькой буквы");
+                favcolors[i] = ShowColor(anketa.name);
             }
+            foreach (string favcolor in favcolors)
+            {
+                Console.WriteLine(favcolor);
+            }
+            Console.ReadKey();
         }
     }
 }
