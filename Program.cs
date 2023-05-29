@@ -1,27 +1,45 @@
 ﻿namespace SVNSkillFactory15
 {
     /// <summary>
-    /// Задание 5.1.5. Напишите программу, которая в цикле вызывает метод ShowColor(),
-    /// записывает его значение в массив из трех цветов favcolors,
-    /// а потом отображает значения этого массива. 
+    /// Задание 5.1.6. Модифицируйте метод из скринкаста:
+    /// после ввода массива с клавиатуры необходимо отсортировать массив и вывести его на экран. 
     /// </summary>
     internal class Program
     {
-        static string ShowColor() => Console.ReadLine();
+        static int[] GetArrayFromConsole()
+        {
+            var result = new int[5];
 
+            for (int i = 0; i < result.Length; i++)
+            {
+                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+                result[i] = int.Parse(Console.ReadLine());
+            }
+            return result;
+        }
+        static int[] SortByInsertion(int[] source)
+        {
+            int outer, inner;
+            for (outer = 1; outer < source.Length; outer++)
+            {
+                int temp = source[outer];
+                inner = outer;
+                while (inner > 0 && source[inner - 1] >= temp)
+                {
+                    source[inner] = source[inner - 1];
+                    --inner;
+                }
+                source[inner] = temp;
+            }
+            return source;
+        }
         public static void Main(string[] args)
         {
-            string[] favcolors = new string[3];
-            for(int i = 0; i < favcolors.Length; i++)
+            int[] result = SortByInsertion(GetArrayFromConsole());
+            foreach (int i in result)
             {
-                Console.WriteLine($@"Напишите свой любимый цвет №{i + 1} на английском с маленькой буквы");
-                favcolors[i] = ShowColor();
+                Console.WriteLine(i);
             }
-            foreach(string favcolor in favcolors)
-            {
-                Console.WriteLine(favcolor);
-            }
-            Console.ReadKey();
         }
     }
 }
