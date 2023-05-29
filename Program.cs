@@ -1,28 +1,25 @@
 ﻿namespace SVNSkillFactory15
 {
     /// <summary>
-    /// Задание 5.1. Создайте кортеж User, содержащий имя пользователя Name
-    /// и массив с текстовой информацией о его пяти любимых блюдах Dishes. 
-    /// Заполните имя пользователя через ввод в консоль, а информацию о блюдах — в цикле через консоль.
+    /// Задание 5.1.5. Напишите программу, которая в цикле вызывает метод ShowColor(),
+    /// записывает его значение в массив из трех цветов favcolors,
+    /// а потом отображает значения этого массива. 
     /// </summary>
     internal class Program
     {
-        static void Main(string[] args)
+        static string ShowColor() => Console.ReadLine();
+
+        public static void Main(string[] args)
         {
-            (string Name, string[] Dishes) User;
-            Console.Write("Введите ваше имя: ");
-            User.Name = Console.ReadLine();
-            User.Dishes = new string[5];
-            for(int i = 0; i < 5; i++)
+            string[] favcolors = new string[3];
+            for(int i = 0; i < favcolors.Length; i++)
             {
-                Console.WriteLine($@"Введите название любимого блюда №{i + 1}");
-                User.Dishes[i] = Console.ReadLine();
+                Console.WriteLine($@"Напишите свой любимый цвет №{i + 1} на английском с маленькой буквы");
+                favcolors[i] = ShowColor();
             }
-            Console.WriteLine($@"Ваше имя {User.Name}");
-            Console.WriteLine("Ваши любимые блюда:");
-            foreach(string Dishes in User.Dishes)
+            foreach(string favcolor in favcolors)
             {
-                Console.WriteLine(Dishes);
+                Console.WriteLine(favcolor);
             }
             Console.ReadKey();
         }
