@@ -1,10 +1,9 @@
 ﻿namespace SVNSkillFactory15
 {
     /// <summary>
-    /// Задание 5.2.14. Используйте методы из задания 5.2.8. 
-    /// Модифицируйте метод GetArrayFromConsole так,
-    /// чтобы размерность массива указывалась в качестве необязательного параметра num.
-    /// Значение по умолчанию оставить 5. 
+    /// Задание 5.2.15. Вызовите метод GetArrayFromConsole, не указывая необязательный параметр.
+    /// Результат работы метода должен быть в переменной array.
+    /// Передайте эту переменную в метод SortArray, а результат этого метода сохраните в переменной sortedarray.
     /// </summary>
     internal class Program
     {
@@ -37,24 +36,8 @@
         static string ShowColor(string name, int age) => Console.ReadLine();
         public static void Main(string[] args)
         {
-            (string name, int age) anketa;
-            Console.Write("Введите имя: ");
-            anketa.name = Console.ReadLine();
-            Console.Write("Введите возраст с цифрами: ");
-            anketa.age = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Ваше имя: {0}", anketa.name);
-            Console.WriteLine("Ваш возраст: {0}", anketa.age);
-            string[] favcolors = new string[3];
-            for (int i = 0; i < favcolors.Length; i++)
-            {
-                Console.WriteLine("{0}, {1} лет \nНапишите свой любимый цвет на английском с маленькой буквы", anketa.name, anketa.age);
-                favcolors[i] = ShowColor(anketa.name, anketa.age);
-            }
-            foreach (string favcolor in favcolors)
-            {
-                Console.WriteLine(favcolor);
-            }
-            Console.ReadKey();
+            var array = GetArrayFromConsole();
+            var sortedarray = SortArray(array);
         }
     }
 }
