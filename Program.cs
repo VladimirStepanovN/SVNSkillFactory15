@@ -1,17 +1,17 @@
 ﻿namespace SVNSkillFactory15
 {
     /// <summary>
-    /// Задание 5.2.8. Разделить метод из задания 5.1.6 GetArrayFromConsole() на два:
-    /// один метод GetArrayFromConsole() должен читать введенные с клавиатуры массивы и возвращать их,
-    /// второй метод SortArray() должен принимать параметром массив array типа данных int,
-    /// сортировать его и возвращать.
+    /// Задание 5.2.14. Используйте методы из задания 5.2.8. 
+    /// Модифицируйте метод GetArrayFromConsole так,
+    /// чтобы размерность массива указывалась в качестве необязательного параметра num.
+    /// Значение по умолчанию оставить 5. 
     /// </summary>
     internal class Program
     {
-        static int[] GetArrayFromConsole()
+        static int[] GetArrayFromConsole(int num = 5)
         {
-            var result = new int[5];
-            for (int i = 0; i < result.Length; i++)
+            var result = new int[num];
+            for (int i = 0; i < num; i++)
             {
                 Console.WriteLine("Введите элемент массива номер {0}", i + 1);
                 result[i] = int.Parse(Console.ReadLine());
