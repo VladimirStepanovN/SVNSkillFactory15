@@ -1,11 +1,39 @@
 ﻿namespace SVNSkillFactory15
 {
     /// <summary>
-    /// Задание 5.2.7. Внесите корректировки в код вывода ваших параметров на экран так,
-    /// чтобы имя и возраст выводились одной строкой, а "Напишите свой любимый цвет" — другой.
+    /// Задание 5.2.8. Разделить метод из задания 5.1.6 GetArrayFromConsole() на два:
+    /// один метод GetArrayFromConsole() должен читать введенные с клавиатуры массивы и возвращать их,
+    /// второй метод SortArray() должен принимать параметром массив array типа данных int,
+    /// сортировать его и возвращать.
     /// </summary>
     internal class Program
     {
+        static int[] GetArrayFromConsole()
+        {
+            var result = new int[5];
+            for (int i = 0; i < result.Length; i++)
+            {
+                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+                result[i] = int.Parse(Console.ReadLine());
+            }
+            return result;
+        }
+        static int[] SortArray(int[] source)
+        {
+            int outer, inner;
+            for (outer = 1; outer < source.Length; outer++)
+            {
+                int temp = source[outer];
+                inner = outer;
+                while (inner > 0 && source[inner - 1] >= temp)
+                {
+                    source[inner] = source[inner - 1];
+                    --inner;
+                }
+                source[inner] = temp;
+            }
+            return source;
+        }
         static string ShowColor(string name, int age) => Console.ReadLine();
         public static void Main(string[] args)
         {
