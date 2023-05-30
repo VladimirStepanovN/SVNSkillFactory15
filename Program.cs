@@ -1,9 +1,10 @@
 ﻿namespace SVNSkillFactory15
 {
     /// <summary>
-    /// Задание 5.2.15. Вызовите метод GetArrayFromConsole, не указывая необязательный параметр.
-    /// Результат работы метода должен быть в переменной array.
-    /// Передайте эту переменную в метод SortArray, а результат этого метода сохраните в переменной sortedarray.
+    /// Задание 5.2.17. Создайте метод ShowArray с параметрами: массив чисел,
+    /// признак сортировки логического типа, необязательный параметр, по умолчанию ЛОЖЬ.
+    /// Метод должен выводить массив на экран.
+    /// Если значение признака сортировки равно ИСТИНА, то предварительно массив нужно отсортировать.
     /// </summary>
     internal class Program
     {
@@ -33,11 +34,19 @@
             }
             return source;
         }
-        static string ShowColor(string name, int age) => Console.ReadLine();
+        static void ShowArray(int[] array, bool isSort = false)
+        {
+            var temp = array;
+            if (isSort) temp = SortArray(array);
+            foreach (int i in temp)
+            {
+                Console.WriteLine(i);
+            }
+        }
         public static void Main(string[] args)
         {
             var array = GetArrayFromConsole();
-            var sortedarray = SortArray(array);
+            ShowArray(array, true);
         }
     }
 }
