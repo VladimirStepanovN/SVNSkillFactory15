@@ -1,21 +1,53 @@
 ﻿namespace SVNSkillFactory15
 {
     /// <summary>
-    /// Задание 5.3.3. Добавьте слово ref в метод ChangeName перед именем параметра.
-    /// Обратите внимание, что это слово нужно указать и в вызове метода.
+    /// Задание 5.3.8. Необходимо передать по ссылке размерность массива
+    /// в метод GetArrayFromConsole и изменить её на 6.
     /// </summary>
     internal class Program
     {
-        static void ChangeAge(ref int age)
+        static int[] GetArrayFromConsole(ref int num)
         {
-            age++;
-            Console.WriteLine($"Возраст после изменения: {age}");
+            num = 6;
+            var result = new int[num];
+            for (int i = 0; i < num; i++)
+            {
+                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+                result[i] = int.Parse(Console.ReadLine());
+            }
+            return result;
+        }
+        static int[] SortArray(int[] source)
+        {
+            int outer, inner;
+            for (outer = 1; outer < source.Length; outer++)
+            {
+                int temp = source[outer];
+                inner = outer;
+                while (inner > 0 && source[inner - 1] >= temp)
+                {
+                    source[inner] = source[inner - 1];
+                    --inner;
+                }
+                source[inner] = temp;
+            }
+            return source;
+        }
+        static void ShowArray(int[] array, bool isSort = false)
+        {
+            var temp = array;
+            if (isSort) temp = SortArray(array);
+            foreach (int i in temp)
+            {
+                Console.WriteLine(i);
+            }
         }
         public static void Main(string[] args)
         {
-            int myAge = 34;
-            ChangeAge(ref myAge);
-            Console.WriteLine($"Мой возраст: {myAge}");
+            int num = 5;
+            var array = GetArrayFromConsole(ref num);
+            ShowArray(array, true);
+            Console.WriteLine($"Значение размера массива после изменения {num}");
         }
     }
 }
