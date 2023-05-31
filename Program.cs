@@ -1,23 +1,25 @@
 ﻿namespace SVNSkillFactory15
 {
     /// <summary>
-    /// Задание 5.5.5. Выполните метод, чтобы посчитать факториал 20. Что отобразится на экране?
+    /// Задание 5.5.8. Необходимо написать рекурсивный метод,
+    /// который возводит введенное число N типа int в указанную степень pow типа byte.
     /// </summary>
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Factorial(20));
+            Console.WriteLine(PowerUp(2, 8));
         }
-        static int Factorial(int x)
+        private static int PowerUp(int N, byte pow)
         {
-            if (x == 0)
+            if (pow == 0) return 1;
+            if (pow > 1)
             {
-                return 1;
+                return N * PowerUp(N, --pow);
             }
             else
             {
-                return x * Factorial(x - 1);
+                return N;
             }
         }
     }
