@@ -1,7 +1,7 @@
 ﻿namespace SVNSkillFactory15
 {
     /// <summary>
-    /// Задание 5.5.3. Залейте упражнение в свой репозиторий в Git.
+    /// Задание 5.5.4. Пусть каждая строка окрашивается в новый цвет, связанный с глубиной deep.
     /// </summary>
     internal class Program
     {
@@ -22,6 +22,7 @@
             {
                 modif = modif.Remove(0, 2);
             }
+            Console.BackgroundColor = (ConsoleColor)deep;
             Console.WriteLine("..." + modif);
             if (deep > 1)
             {
